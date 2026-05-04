@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ＨｏｔＳｃｏｐｅ ＴＶ</title>
+<title>HotScope TV</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -24,7 +24,6 @@ body{
   font-size:20px;
   font-weight:700;
   padding:16px 14px 6px;
-  line-height:1.4;
 }
 
 .desc{
@@ -36,28 +35,14 @@ body{
 .video-wrap{
   position:relative;
   background:#000;
-  overflow:hidden;
 }
 
-/* loading */
-.loading{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:13px;
-  color:#cbd5e1;
-}
-
-/* video */
 video{
   width:100%;
   max-height:75vh;
   display:block;
-  background:#000;
 }
 
-/* tombol play */
 .play-btn{
   position:absolute;
   top:50%;
@@ -67,35 +52,21 @@ video{
   color:#fff;
   border:none;
   padding:13px 20px;
-  font-size:15px;
   border-radius:8px;
+  font-size:15px;
   cursor:pointer;
-  z-index:2;
 }
 
-/* info */
 .info{
   padding:14px;
   font-size:13px;
   color:#cbd5e1;
 }
 
-/* badge */
-.badge{
-  display:inline-block;
-  background:#172033;
-  font-size:12px;
-  padding:6px 10px;
-  border-radius:999px;
-  margin:0 14px 14px;
-}
-
-/* native */
 .native-box{
   margin:10px 14px;
 }
 
-/* footer */
 .footer{
   text-align:center;
   font-size:11px;
@@ -114,85 +85,73 @@ Interesting Moment Caught On Camera
 </div>
 
 <div class="desc">
-Watch the full clip below and see what really happened.
+Watch the full clip below.
 </div>
 
 <div class="video-wrap">
 
-<div class="loading" id="loading">Loading video...</div>
-
 <button class="play-btn" id="playBtn">▶ Tap To Watch</button>
 
 <video id="player" muted playsinline preload="metadata">
-<source id="videoSource" src="" type="video/mp4">
+<source src="https://cdn.videy.co/AAU8a62J1.mp4" type="video/mp4">
 </video>
 
 </div>
 
 <div class="info">
-Tap to start the video if it doesn't play automatically.
+Tap to start the video.
 </div>
 
-<div class="badge">
-🔥 Trending Now
-</div>
-
-<!-- NATIVE ADS -->
+<!-- ✅ NATIVE ADS -->
 <div class="native-box">
-<script async src="https://brewdismaychest.com/e683f08bb48dce3b56a2a341bc2a4152/invoke.js"></script>
+<script async="async" data-cfasync="false" src="https://brewdismaychest.com/e683f08bb48dce3b56a2a341bc2a4152/invoke.js"></script>
 <div id="container-e683f08bb48dce3b56a2a341bc2a4152"></div>
 </div>
 
 <div class="footer">
-© Spicy Vibes TV
+© HotScope TV
 </div>
 
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-let video = params.get("v");
-
-// default video
-if(!video){
-  video = "https://cdn.videy.co/AAU8a62J1.mp4";
-}
-
-// normalize link
-if(!video.startsWith("http")){
-  video = "https://cdn.videy.co/" + video;
-}
-
 const player = document.getElementById("player");
-const source = document.getElementById("videoSource");
 const playBtn = document.getElementById("playBtn");
-const loading = document.getElementById("loading");
 
-source.src = video;
-player.load();
-
-// sembunyiin loading saat ready
-player.addEventListener("loadeddata", () => {
-  loading.style.display = "none";
-});
-
-// autoplay attempt (soft)
-player.play().catch(()=>{});
-
-// trigger sekali
 let triggered = false;
 
 playBtn.addEventListener("click", () => {
+
+  // play video
   player.muted = false;
   player.play();
   playBtn.style.display = "none";
 
-  // popunder aman (user action)
+  // 🔥 POPUNDER (AMAN - SETELAH KLIK)
   if(!triggered){
     triggered = true;
-    window.open("https://brewdismaychest.com/2c/e6/f8/2ce6f8591c212a9ace00e29d2b62f259.js", "_blank");
+
+    var s = document.createElement("script");
+    s.src = "https://brewdismaychest.com/2c/e6/f8/2ce6f8591c212a9ace00e29d2b62f259.js";
+    document.body.appendChild(s);
   }
+
 });
+</script>
+
+<!-- ✅ HISTATS -->
+<script type="text/javascript">
+var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,5014859,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); 
+hs.type = 'text/javascript'; 
+hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();
 </script>
 
 </body>
