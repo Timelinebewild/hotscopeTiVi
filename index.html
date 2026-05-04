@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>HotScope TV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ＨｏｔＳｃｏｐｅ ＴＶ</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -17,61 +17,43 @@ body{
 .page{
   max-width:480px;
   margin:auto;
-  min-height:100vh;
 }
 
 .title{
-  font-size:20px;
-  font-weight:700;
-  padding:16px 14px 6px;
+  font-size:18px;
+  font-weight:600;
+  padding:14px;
 }
 
 .desc{
-  color:#94a3b8;
   font-size:13px;
-  padding:0 14px 14px;
-}
-
-.video-wrap{
-  position:relative;
-  background:#000;
+  color:#94a3b8;
+  padding:0 14px 12px;
 }
 
 video{
   width:100%;
-  max-height:75vh;
-  display:block;
+  background:#000;
 }
 
-.play-btn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background:#ff2d55;
-  color:#fff;
-  border:none;
-  padding:13px 20px;
-  border-radius:8px;
-  font-size:15px;
-  cursor:pointer;
+/* AD CLEAN */
+.ad-box{
+  margin:16px;
+  display:flex;
+  justify-content:center;
 }
 
-.info{
-  padding:14px;
-  font-size:13px;
-  color:#cbd5e1;
-}
-
-.native-box{
+.badge{
   margin:10px 14px;
+  font-size:12px;
+  color:#94a3b8;
 }
 
 .footer{
   text-align:center;
   font-size:11px;
   color:#64748b;
-  padding:20px 10px;
+  padding:20px;
 }
 </style>
 </head>
@@ -81,76 +63,56 @@ video{
 <div class="page">
 
 <div class="title">
-Interesting Moment Caught On Camera
+Watch This Video
 </div>
 
 <div class="desc">
-Watch the full clip below.
+Tap play to watch the full clip.
 </div>
 
-<div class="video-wrap">
-
-<button class="play-btn" id="playBtn">▶ Tap To Watch</button>
-
-<video id="player" muted playsinline preload="metadata">
-<source src="https://cdn.videy.co/AAU8a62J1.mp4" type="video/mp4">
+<video id="player" controls playsinline preload="metadata">
+<source id="videoSource" src="" type="video/mp4">
 </video>
 
-</div>
+<div class="badge">Advertisement</div>
 
-<div class="info">
-Tap to start the video.
-</div>
-
-<!-- ✅ NATIVE ADS -->
-<div class="native-box">
-<script async="async" data-cfasync="false" src="https://brewdismaychest.com/e683f08bb48dce3b56a2a341bc2a4152/invoke.js"></script>
-<div id="container-e683f08bb48dce3b56a2a341bc2a4152"></div>
+<!-- 1 IKLAN AJA (LEBIH AMAN) -->
+<div class="ad-box">
+<script>
+atOptions = {
+'key' : '0c20a39868e8ab9903cb6400500ddb51',
+'format' : 'iframe',
+'height' : 250,
+'width' : 300,
+'params' : {}
+};
+</script>
+<script src="//brewdismaychest.com/0c20a39868e8ab9903cb6400500ddb51/invoke.js"></script>
 </div>
 
 <div class="footer">
-© HotScope TV
+© Media Content
 </div>
 
 </div>
 
 <script>
-const player = document.getElementById("player");
-const playBtn = document.getElementById("playBtn");
+(function(){
 
-let triggered = false;
+const params = new URLSearchParams(window.location.search);
+let video = params.get("v");
 
-playBtn.addEventListener("click", () => {
+if(!video){
+video = "https://cdn.videy.co/AAU8a62J1.mp4";
+}
 
-  // play video
-  player.muted = false;
-  player.play();
-  playBtn.style.display = "none";
+if(!video.startsWith("http")){
+video = "https://cdn.videy.co/" + video;
+}
 
-  // 🔥 POPUNDER (AMAN - SETELAH KLIK)
-  if(!triggered){
-    triggered = true;
+document.getElementById("videoSource").src = video;
+document.getElementById("player").load();
 
-    var s = document.createElement("script");
-    s.src = "https://brewdismaychest.com/2c/e6/f8/2ce6f8591c212a9ace00e29d2b62f259.js";
-    document.body.appendChild(s);
-  }
-
-});
-</script>
-
-<!-- ✅ HISTATS -->
-<script type="text/javascript">
-var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5014859,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); 
-hs.type = 'text/javascript'; 
-hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
 })();
 </script>
 
